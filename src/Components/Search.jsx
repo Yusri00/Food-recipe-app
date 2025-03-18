@@ -2,17 +2,21 @@ import { useState } from "react";
 
 function Search(){
     const [searchForFood, setFood] = useState('');
-    return(
-    <div>
-        <input 
-        type="text" 
-        placeholder="Search for food.."
-        value={searchForFood}
-        onChange={(e)=> setFood(e.target.value)} // Uppdaterar state
-        />
-        <button type="submit"></button>
-    </div>
-    ); 
-}
-
-export default Search;
+    const handleInputChange = (e) => {
+        setSearchForFood(e.target.value);
+        setFood(e.target.value); // Skicka det upp till App.jsx för att uppdatera searchForFood
+      };
+    
+      return (
+        <div>
+          <input
+            type="text"
+            placeholder="Search for food..."
+            value={searchForFood}
+            onChange={handleInputChange} // Uppdatera både lokalt och i App.jsx
+          />
+        </div>
+      );
+    }
+    
+    export default Search;

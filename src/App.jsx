@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Search from './Components/Search.jsx'
 import Details from './Components/Details.jsx'
 import SearchList from './Components/SearchList.jsx'
+import ButtonClick from './Components/ButtonClick.jsx'
 import './App.css'
 
 function App() {
@@ -30,8 +31,8 @@ function App() {
   return (
     <div>
       <h1>Smariga recept</h1>
-      <button onClick={fetchFood}>Generate food recipe</button>
       <Search setFood={setFood} />
+      <ButtonClick fetchFood={fetchFood} />
       <Details />
        <SearchList meals={meals}/>
     </div>

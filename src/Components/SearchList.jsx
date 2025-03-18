@@ -1,17 +1,12 @@
 
-function SearchList() {
-
-    const food1 = 'banana'
-    const food2 = 'dog'
-    const food3 = 'cat'
-
+const SearchList = ({ meals }) => {
     return (
-        <ul>
-            <li>{food1}</li>
-            <li>{food2}</li>
-            <li>{food3}</li>
-        </ul>
-    )
-    }
-
-export default SearchList
+      <ul>
+        {meals.map((meal) => (
+          <li key={meal.idMeal}>{meal.strMeal}</li>
+        ))}
+      </ul>
+    );
+  };
+  
+  export default SearchList;
