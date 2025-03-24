@@ -1,9 +1,10 @@
 import { useState } from "react";
 
-function Search(){
-    const [searchForFood, setFood] = useState('');
+function Search({ setFood }) { // Tar emot setFood som en prop från App.jsx)
+    const [searchForFood, setSearchForFood] = useState('');
+    
     const handleInputChange = (e) => {
-        setSearchForFood(e.target.value);
+        setSearchForFood(e.target.value); 
         setFood(e.target.value); // Skicka det upp till App.jsx för att uppdatera searchForFood
       };
     
