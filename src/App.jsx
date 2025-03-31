@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Search from './components/Search.jsx'
 import SearchList from './components/SearchList.jsx'
 import ButtonClick from './components/ButtonClick.jsx'
-import MealInfo from './components/MealInfo.jsx'
+import MealInfo from './components/MealList.jsx'
+import MealDetails from './components/MealDetails.jsx'
 import './App.css'
 
 function App() {
@@ -32,13 +34,26 @@ function App() {
   }, [searchForFood]); // useEffect körs vid förändring av searchForFood  
 
   return (
-    <div>
+    <Router>
       <h1>Smariga recept</h1>
-      <Search setFood={setFood} />
-      <ButtonClick fetchFood={fetchFood} />
-      <SearchList meals={meals}/>
-      <MealInfo meals={meals}/>
-    </div>
+      <Routes>
+         {/* Startsidan med sökning */}
+        <Route
+          path="/"
+          element={
+            <div> 
+              <Search setFood={setFood} />
+              <ButtonClick fetchFood={fetchFood} />
+              <SearchList meals={meals}/>
+              <MealInfo meals={meals}/>
+              </div>
+            }
+          />
+
+         {/* Sidan för att visa detaljer om en måltid */}
+         <Route path="/meal/:id" element={<MealDetails meals={meals} />} />
+      </Routes>
+    </Router>
   );
 }
 
