@@ -29,7 +29,7 @@ function MealDetails({meals}) {
     const { id } = useParams(); //Hämtar ID från url
 
     if(meals.length === 0){
-        return<p>Search for recipes first!</p>
+        return<p>Search for recipes!</p>
     }
 
     //Hitta rätt maträtt i listan

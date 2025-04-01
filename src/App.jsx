@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Search from './components/Search.jsx'
-import ButtonClick from './components/ButtonClick.jsx'
 import MealInfo from './components/MealList.jsx'
 import MealDetails from './components/MealDetails.jsx'
 import './App.css'
@@ -9,7 +8,7 @@ import './App.css'
 function App() {
   const [searchForFood, setFood] = useState(""); // Söktexten från input
   const [meals, setMeals] = useState([]);// Här lagras API-resultaten
-  
+
   // 🔍 Hämta data när searchForFood ändras
   const fetchFood = () => {
     if(!searchForFood.trim()){
@@ -27,11 +26,10 @@ function App() {
         setMeals([]); // Tom array om inget hittas.
       }
       })
-      .catch(error => console.error("Fel vid inhämtning av data", error));
+      .catch(error => console.error("Error fetching data", error));
   };
 
   useEffect(() => {
-    console.log("useEffect körs! searchForFood:", searchForFood);
     if (searchForFood === "") return; // Om input är tomt, gör inget
     fetchFood(); // Anropa fetchFood när searchForFood ändras
   }, [searchForFood]); // useEffect körs vid förändring av searchForFood  
@@ -45,8 +43,7 @@ function App() {
           path="/"
           element={
             <div> 
-              <Search setFood={setFood} />
-              <ButtonClick fetchFood={fetchFood} />
+              <Search setFood={setFood} setSearchForFood={searchForFood} fetchFood={fetchFood}/>
               <MealInfo meals={meals}/>
               <MealDetails meals={meals}/>
               </div>
@@ -54,7 +51,7 @@ function App() {
           />
 
          {/* Sidan för att visa detaljer om en måltid */}
-         <Route path="/meal/:id" element={<MealDetails meals={meals} />} />
+        <Route path="/meal/:id" element={<MealDetails meals={meals} />} />
       </Routes>
     </Router>
   );
