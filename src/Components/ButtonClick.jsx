@@ -5,7 +5,7 @@ function ButtonClick({searchForFood, fetchFood}){
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleClick = () => {
-    if(searchForFood === ""){
+    if(searchForFood.trim() === ""){
       setErrorMessage('Please fill in text field');
       return; // Stoppa `fetchFood()` från att köras
     }

@@ -27,12 +27,13 @@ import { useParams } from "react-router-dom";
 function MealDetails({meals}) {
 
     const { id } = useParams(); //Hämtar ID från url
-    console.log("ID från URL:", id);
-    console.log("Alla måltider:", meals); //Tom
+
+    if(meals.length === 0){
+        return<p>Search for recipes first!</p>
+    }
+
     //Hitta rätt maträtt i listan
     const selectedMeal = meals.find((meal) => meal.idMeal == id);
-    
-
 
     // Om måltiden inte finns, visa ett meddelande
     if (!selectedMeal) return <p>Recipe could not be found</p>;

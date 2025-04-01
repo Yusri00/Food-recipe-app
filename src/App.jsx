@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Search from './components/Search.jsx'
-import SearchList from './components/SearchList.jsx'
 import ButtonClick from './components/ButtonClick.jsx'
 import MealInfo from './components/MealList.jsx'
 import MealDetails from './components/MealDetails.jsx'
@@ -22,7 +21,11 @@ function App() {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        setMeals(data.meals || []); // Om inga resultat, sätt en tom array
+      if (data.meals) {
+        setMeals(data.meals); // Uppdatera bara om API:et hittar recept
+      } else {
+        setMeals([]); // Tom array om inget hittas.
+      }
       })
       .catch(error => console.error("Fel vid inhämtning av data", error));
   };
@@ -44,8 +47,8 @@ function App() {
             <div> 
               <Search setFood={setFood} />
               <ButtonClick fetchFood={fetchFood} />
-              <SearchList meals={meals}/>
               <MealInfo meals={meals}/>
+              <MealDetails meals={meals}/>
               </div>
             }
           />
