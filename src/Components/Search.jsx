@@ -4,17 +4,22 @@ function Search({ setFood, fetchFood }) { // Tar emot setFood som en prop från 
     const [searchForFood, setSearchForFood] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     
-    const handleSearch = () => {
+    const handleClick = () => {
       if(searchForFood.trim() === ""){
         setErrorMessage('Please fill in field');
         return; 
       }
-       // Stoppa `fetchFood()` från att köras
        setErrorMessage(""); //Felmedelandet rensas om input är korrekt
        setFood(searchForFood); // Skickar värdet till App.jsx
-       fetchFood(); // Gör API-anropet vid klickning
+       fetchFood(); // Hämta recept
       };
 
+    const handleKeyDown = (e) => {
+      if(e.key === 'Enter'){
+        return handleClick();
+      } 
+
+    }
       return (
         <div>
           <input
@@ -22,8 +27,9 @@ function Search({ setFood, fetchFood }) { // Tar emot setFood som en prop från 
             placeholder="Search for food..."
             value={searchForFood}
             onChange={(e) => setSearchForFood(e.target.value)}
+            onKeyDown={(e) => handleKeyDown(e)}
           />
-          <button onClick ={handleSearch}>Search</button>
+          <button onClick ={handleClick}>Search</button>
           {errorMessage && <p>{errorMessage}</p>} {/* Visa felmeddelande om det finns */}
         </div>
       );

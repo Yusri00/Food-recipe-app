@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 
-const MealInfo = ({meals}) => {
+const MealList = ({meals}) => {
+    if (meals.length === 0){
+        return <p>Recipe could not be found!</p>
+    } //Ändra så detta inte syns.        
+    
     return (
     <ul>
-        {meals.map((mealInfo) => (
-        <li key={mealInfo.idMeal}>
-            <Link to={`/meal/${mealInfo.idMeal}`}>
-            <h3>{mealInfo.strMeal}</h3>
-            <img src = {mealInfo.strMealThumb} alt = {mealInfo.strMeal} />
+        {meals.map((mealList) => (
+        <li key={mealList.idMeal}>
+            <Link to={`/meal/${mealList.idMeal}`}>
+            <h3>{mealList.strMeal}</h3>
+            <img src = {mealList.strMealThumb} alt = {mealList.strMeal} />
             </Link>
         </li>
         ))}
@@ -15,4 +19,4 @@ const MealInfo = ({meals}) => {
         );
 };
 
-export default MealInfo;
+export default MealList;
