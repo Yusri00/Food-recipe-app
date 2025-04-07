@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Search from './components/Search.jsx'
 import MealList from './components/MealList.jsx'
@@ -8,39 +9,50 @@ import './App.css'
 function App() {
   const [searchForFood, setFood] = useState(""); // Söktexten från input
   const [meals, setMeals] = useState([]);// Här lagras API-resultaten
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const fetchFood = () => {
-    if (searchForFood === "") return; // Om input är tom, gör inget
-    
+  // Anropa fetchFood inuti useEffect
+  useEffect(() => {
+    if (searchForFood.trim() === "") return;
+    fetchFood(setErrorMessage);
+  }, [searchForFood]); // körs varje gång searchForFood ändras 
+      
+  const fetchFood = (setErrorMessage) => {    
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchForFood}`)
       .then(response => response.json())
       .then(data => {
         console.log("API response:", data); 
-  
         if (data.meals) {
           setMeals(data.meals);
+          setErrorMessage(""); // Inga fel, så vi rensar felmeddelandet
         } else {
-          setMeals([]); // Om ingen rätt hittas, töms listan
+          setMeals([]); // Om ingen maträtt hittas, töms listan
+          setErrorMessage("Recipe could not be found");
         }
       })
-      .catch(error => console.error("Error fetching data", error));
+      .catch(error => {
+        console.error("Error fetching data", error);
+        setErrorMessage("Something went wrong");
+      });
   };
   
-  // 🔹 Anropa fetchFood inuti useEffect
-  useEffect(() => {
-    fetchFood();
-  }, [searchForFood]); 
+    const handleReset = () => {
+      setMeals([]);
+      setFood("");
+    };
 
   return (
     <Router>
-      <h1>Food Recipes</h1>
+      <Link to= "/" onClick={handleReset}><h1>Food Recipes</h1></Link>
       <Routes>
          {/* Startsidan med sökning */}
         <Route
           path="/"
           element={
             <div> 
-              <Search setFood={setFood} fetchFood={fetchFood}/>
+              <Search setFood={setFood} 
+              fetchFood={fetchFood}
+              errorMessage= {errorMessage}/>
               <MealList meals={meals}/>
               </div>
             }

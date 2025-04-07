@@ -3,17 +3,17 @@ import { useParams } from "react-router-dom";
 function MealDetails({meals}) {
     const { id } = useParams(); //Hämtar ID från url
 
-    if(meals.length === 0) return<p>Search for recipes!</p>
+    //Finns det ingen meal, visas ingen error(recipe not found undviks) 
+    if(!meals || meals.length === 0) return null;
     
     //Hitta rätt maträtt i listan
     const selectedMeal = meals.find((meal) => meal.idMeal == id);
 
-    // Om måltiden inte finns, visa ett meddelande
+    // Visar error BARA när meals utan matchning med recept
     if (!selectedMeal) return <p>Recipe could not be found</p>;
 
     //Loopa igenom alla ingredienser i arrayen
     const ingredients = [];
-
     for (let i = 1; i <= 20; i++){
         const measures = selectedMeal[`strMeasure${i}`];
         const ingredient = selectedMeal[`strIngredient${i}`];
