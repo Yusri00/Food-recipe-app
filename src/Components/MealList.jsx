@@ -1,11 +1,6 @@
 import { Link } from "react-router-dom";
 
 const MealList = ({meals}) => {
-    // if (meals.length === 0){
-    //     return <p>Recipe could not be found!</p>
-    // }//Ändra för att se när man skriver fel ska 
-     //Inget recept komma upp. 
-    
     return (
     <ul>
         {meals.map((mealList) => (

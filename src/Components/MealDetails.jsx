@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 function MealDetails({meals}) {
     const { id } = useParams(); //Hämtar ID från url
 
-    //Finns det ingen meal, visas ingen error(recipe not found undviks) 
+    //Kollar om meal finns och har innehåll. Vi vill inte se detaljer för måltid som inte finns ännu.
     if(!meals || meals.length === 0) return null;
     
     //Hitta rätt maträtt i listan
@@ -23,7 +23,6 @@ function MealDetails({meals}) {
         } 
     }
 
-    // Annars....    
     return (  
     <div>
         <h2>{selectedMeal.strMeal}</h2>

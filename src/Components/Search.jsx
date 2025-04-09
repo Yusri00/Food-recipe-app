@@ -37,7 +37,7 @@ function Search({ setFood, errorMessage }) { // Tar emot setFood som en prop fr√
           <button onClick ={handleClick}>Search</button>
 
           {localError && <p>{localError}</p>} {/* Visa felmeddelande om det finns */}
-          {!localError && errorMessage && <p>{errorMessage}</p>}
+          {!localError && errorMessage && <p className= "error">{errorMessage}</p>}
         </div>
       );
     }

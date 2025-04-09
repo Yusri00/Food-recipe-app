@@ -43,20 +43,32 @@ function App() {
 
   return (
     <Router>
-      <Link to= "/" onClick={handleReset}><h1>Food Recipes</h1></Link>
       <Routes>
          {/* Startsidan med sökning */}
         <Route
           path="/"
           element={
-            <div> 
-              <Search setFood={setFood} 
-              fetchFood={fetchFood}
-              errorMessage= {errorMessage}/>
-              <MealList meals={meals}/>
-              </div>
-            }
-          />
+          <div className="startPage"> 
+          <div className="titleContainer">
+            <Link to="/" onClick={handleReset}>
+              <h1>Food Recipes</h1>
+            </Link>
+          </div>
+
+          <div className= "searchContainer">
+            <Search 
+            setFood={setFood} 
+            fetchFood={fetchFood} 
+            errorMessage={errorMessage} 
+            />
+          </div>
+
+          <div className='mealListContainer'>
+            <MealList meals={meals} />
+        </div>
+      </div>
+      }
+    />  
 
          {/* Sidan för att visa detaljer om en måltid */}
         <Route path="/meal/:id" element={<MealDetails meals={meals} />} />

@@ -1,7 +1,12 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -31,27 +36,90 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
+.startPage {
+  background-image: url('/background.jpeg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titleContainer {
+  margin-bottom: 40px;
+}
+
+.searchContainer {
+  margin-bottom: 30px;
+}
+
+.mealListContainer {
+  width: 100%;
+}
+
+.error {
+  color: red;
+  margin-right: 70px;
+  font-weight: 400;
+  font-size: 17px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
 h1 {
   font-size: 3.2em;
+  margin: 0;
+  padding-top: 1rem;
   line-height: 1.1;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #353434;
 }
 
 h3 {
   font-size:30px;
   list-style-type: none;
+  color: #1a1a1a;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 600;
+  font-size: 30px;
 }
 
+h3:hover {
+  color: blue;
+}
+
+/* Detailed mealList page */
 img {
-border-radius: 40px;
-
+  border-radius: 50px;
 }
+
+img:hover {
+  border: 1px solid rgb(147, 147, 147);
+  border-radius: 400px;
+
+  
+}
+
+ul {
+  list-style-type: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+input {
+  width: 250px;
+  height: 30px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  color: black;
+  font-size: 15px;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -63,9 +131,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -82,5 +152,6 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+  
 
 }
