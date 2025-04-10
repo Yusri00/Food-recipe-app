@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-function Search({ setFood, errorMessage }) { // Tar emot setFood som en prop frÃ¥n App.jsx)
+function Search({ setFood, errorMessage }) { 
     const [searchForFood, setSearchForFood] = useState('');
     const [localError, setLocalError] = useState('');
     const inputRef = useRef(null);
@@ -36,7 +36,7 @@ function Search({ setFood, errorMessage }) { // Tar emot setFood som en prop frÃ
           />
           <button onClick ={handleClick}>Search</button>
 
-          {localError && <p>{localError}</p>} {/* Visa felmeddelande om det finns */}
+          {localError && <p style={{color: 'red'}}>{localError}</p>} {/* Visa felmeddelande om det finns */}
           {!localError && errorMessage && <p className= "error">{errorMessage}</p>}
         </div>
       );

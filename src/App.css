@@ -1,11 +1,11 @@
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   text-align: center;
 }
@@ -30,6 +30,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -68,22 +69,23 @@ body {
   margin-right: 70px;
   font-weight: 400;
   font-size: 17px;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
+
 h1 {
   font-size: 3.2em;
   margin: 0;
   padding-top: 1rem;
   line-height: 1.1;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: #353434;
 }
 
 h3 {
-  font-size:30px;
+  font-size: 30px;
   list-style-type: none;
   color: #1a1a1a;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: 600;
   font-size: 30px;
 }
@@ -95,18 +97,56 @@ h3:hover {
 /* Detailed mealList page */
 img {
   border-radius: 50px;
+  transition: border-radius ease-in-out 0.5s, border 0.5s ease-in-out;
 }
 
 img:hover {
   border: 1px solid rgb(147, 147, 147);
   border-radius: 400px;
-
-  
 }
 
-ul {
+.ingredientList {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   list-style-type: none;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.ingredientList li {
+  position: relative;
+  padding-left: 1.8em; /* space for custom bullet */
+  margin-bottom: 9px;
+  font-size: 18px;
+  line-height: 1.4; /* mindre space mellan textraderna */
+  color: #f0f0f0; /* light for dark mode */
+  display: flex;
+  align-items: center; /* ensures bullet and text are aligned */
+  margin-left: 50px;
+}
+.ingredientList li::before {
+  content:'';
+  list-style-type: circle;
+  background-color: rgb(204, 162, 25);
+  width: 0.70em;
+  height: 0.70em;
+  display: inline-block; /* Visar cirkel form */
+  vertical-align: baseline;
+  margin-right: 0.9em;
+  position: absolute;
+  border-radius: 50%;
+  transform: translateY(-50);
+  top:50%;
+  left: 0%;
+}
+
+.measures{
+  font-weight: bold;
+  display: inline-block;
+}
+
+p {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 17px;
 }
 
 input {
@@ -146,12 +186,14 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
-  
+
 
 }

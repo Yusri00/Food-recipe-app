@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Link } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Search from './components/Search.jsx'
-import MealList from './components/MealList.jsx'
-import MealDetails from './components/MealDetails.jsx'
+import MealDetails from './pages/MealDetails.jsx'
 import './App.css'
+import StartPage from './pages/StartPage.jsx';
 
 function App() {
   const [searchForFood, setFood] = useState(""); // Söktexten från input
@@ -24,7 +22,7 @@ function App() {
         console.log("API response:", data); 
         if (data.meals) {
           setMeals(data.meals);
-          setErrorMessage(""); // Inga fel, så vi rensar felmeddelandet
+          setErrorMessage(""); // Inga fel, vi rensar felmeddelandet
         } else {
           setMeals([]); // Om ingen maträtt hittas, töms listan
           setErrorMessage("Recipe could not be found");
@@ -41,35 +39,23 @@ function App() {
       setFood("");
     };
 
+    // TODO: Försök dig på VG uppgiften, om inte - testa med olika projekt som involverar global state management, typ Context APIet eller Zustand
+    const startPageProps = {
+      handleReset,
+      setFood,
+      fetchFood,
+      errorMessage,
+      meals
+    }
+
   return (
     <Router>
       <Routes>
          {/* Startsidan med sökning */}
         <Route
           path="/"
-          element={
-          <div className="startPage"> 
-          <div className="titleContainer">
-            <Link to="/" onClick={handleReset}>
-              <h1>Food Recipes</h1>
-            </Link>
-          </div>
-
-          <div className= "searchContainer">
-            <Search 
-            setFood={setFood} 
-            fetchFood={fetchFood} 
-            errorMessage={errorMessage} 
-            />
-          </div>
-
-          <div className='mealListContainer'>
-            <MealList meals={meals} />
-        </div>
-      </div>
-      }
-    />  
-
+          element={<StartPage {...startPageProps} />}
+        />
          {/* Sidan för att visa detaljer om en måltid */}
         <Route path="/meal/:id" element={<MealDetails meals={meals} />} />
       </Routes>

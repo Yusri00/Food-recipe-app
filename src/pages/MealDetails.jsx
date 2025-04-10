@@ -19,8 +19,14 @@ function MealDetails({meals}) {
         const ingredient = selectedMeal[`strIngredient${i}`];
 
         if (measures && ingredient){
-            ingredients.push(`${measures} ${ingredient}`);
-        } 
+            ingredients.push(
+                <li key={i}>
+                <span className="measures">{measures}</span>
+                <span>&nbsp;</span>
+                {ingredient}
+                </li>
+            );
+        }
     }
 
     return (  
@@ -29,14 +35,14 @@ function MealDetails({meals}) {
         <img src = {selectedMeal.strMealThumb}  alt={selectedMeal.strMeal} />
         
         <h2>Ingredients:</h2>
-    <ul>
-        {ingredients.map((ingredient, index) => (
-        <li key={index}>{ingredient}</li>
-        ))}
-    </ul>
+        <ul className="ingredientList">
+    {ingredients}
+</ul>
     
         <h2>Instructions:</h2>
-        <p>{selectedMeal.strInstructions}</p>
+        {selectedMeal.strInstructions.split('\r\n').map((string, index) => (
+            <p key={index}>{string}</p>
+        ))}
     </div>
         );
 }
