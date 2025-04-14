@@ -24,7 +24,7 @@ const StartPage = ({ handleReset, setFood, fetchFood, errorMessage, meals }) => 
             <MealList meals={meals} />
         </div>
     </div>
-  )
+    )
 }
 
 export default StartPage

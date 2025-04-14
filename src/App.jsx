@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MealDetails from './pages/MealDetails.jsx'
-import './App.css'
+import MealDetails from './pages/MealDetails.jsx';
 import StartPage from './pages/StartPage.jsx';
+import './App.css';
 
 function App() {
   const [searchForFood, setFood] = useState(""); // Söktexten från input

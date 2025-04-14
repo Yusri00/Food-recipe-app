@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: 100%;
@@ -25,16 +31,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
   min-width: 320px;
@@ -52,12 +48,76 @@ body {
   align-items: center;
 }
 
-.titleContainer {
-  margin-bottom: 40px;
-}
-
 .searchContainer {
   margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Mellanrum mellan input och knapp */
+  margin-bottom: 30px;
+  flex-wrap: wrap; /* Gör att de inte bryts konstigt på små skärmar */
+}
+
+
+input {
+  width: 300px;
+  height: 40px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  margin-right: 10px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #646cff;
+  box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.3);
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.5em;
+  font-size: 1em;
+  font-weight: 500;
+  background-color: #1a1a1a;
+  color: white;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:hover {
+  background-color: #333;
+  transform: translateY(-1px);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+.titleContainer {
+  margin-bottom: 40px;
 }
 
 .mealListContainer {
@@ -74,11 +134,13 @@ body {
 
 h1 {
   font-size: 3.2em;
-  margin: 0;
-  padding-top: 1rem;
   line-height: 1.1;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: #353434;
+  color: #1a1a1a;
+}
+
+h2{
+  color: #1a1a1a;
 }
 
 h3 {
@@ -95,6 +157,32 @@ h3:hover {
 }
 
 /* Detailed mealList page */
+.mealDetails {
+  background-image: url('/food-details.jpg');
+  background-size:cover;
+  background-position: center;
+  min-height: 100vh; 
+}
+
+.mealContentBox {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 1000px;
+  margin: 60px auto;
+  /* Centrerar boxen horisontellt + lägger till luft ovanför */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* Lägger till skugga så boxen "lyfts" från bakgrunden */
+}
+
+.mealTitle{
+  font-size: 40px;
+}
+
+.mealDetails img {
+  margin-top: 50px; 
+}
+
 img {
   border-radius: 50px;
   transition: border-radius ease-in-out 0.5s, border 0.5s ease-in-out;
@@ -118,7 +206,7 @@ img:hover {
   margin-bottom: 9px;
   font-size: 18px;
   line-height: 1.4; /* mindre space mellan textraderna */
-  color: #f0f0f0; /* light for dark mode */
+  color: #1a1a1a; /* light for dark mode */
   display: flex;
   align-items: center; /* ensures bullet and text are aligned */
   margin-left: 50px;
@@ -134,7 +222,7 @@ img:hover {
   margin-right: 0.9em;
   position: absolute;
   border-radius: 50%;
-  transform: translateY(-50);
+  transform: translateY(-50%);
   top:50%;
   left: 0%;
 }
@@ -144,41 +232,19 @@ img:hover {
   display: inline-block;
 }
 
+.instructions {
+  list-style-type: decimal;
+  margin-left: 35px;
+  line-height: 50px;
+  color:#1a1a1a;
+  margin-left: 50px;
+  padding-left: 1.8em; /* samma nivå som ingredientsList */
+}
+
+
 p {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 17px;
-}
-
-input {
-  width: 250px;
-  height: 30px;
-  background-color: #f2f2f2;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 5px;
-  color: black;
-  font-size: 15px;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-button:hover {
-  border-color: #646cff;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {

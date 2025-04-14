@@ -30,19 +30,21 @@ function MealDetails({meals}) {
     }
 
     return (  
-    <div>
-        <h2>{selectedMeal.strMeal}</h2>
+    <div className="mealDetails">
+        <h2 className="mealTitle">{selectedMeal.strMeal}</h2>
         <img src = {selectedMeal.strMealThumb}  alt={selectedMeal.strMeal} />
         
-        <h2>Ingredients:</h2>
-        <ul className="ingredientList">
-    {ingredients}
-</ul>
+        <div className="mealContentBox">
+        <h2 className="ingredientsTitle">Ingredients</h2>
+        <ul className="ingredientList">{ingredients}</ul>
     
-        <h2>Instructions:</h2>
+        <h2>Instructions</h2>
+        <ol className="instructions">
         {selectedMeal.strInstructions.split('\r\n').map((string, index) => (
-            <p key={index}>{string}</p>
+            <li key={index}>{string}</li>
         ))}
+        </ol>
+        </div>
     </div>
         );
 }
