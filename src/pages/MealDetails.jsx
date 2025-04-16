@@ -29,24 +29,31 @@ function MealDetails({meals}) {
         }
     }
 
-    return (  
-    <div className="mealDetails">
-        <h2 className="mealTitle">{selectedMeal.strMeal}</h2>
-        <img src = {selectedMeal.strMealThumb}  alt={selectedMeal.strMeal} />
-        
+return (  
+    <div className="mealDetailsBackground">
         <div className="mealContentBox">
-        <h2 className="ingredientsTitle">Ingredients</h2>
-        <ul className="ingredientList">{ingredients}</ul>
-    
-        <h2>Instructions</h2>
-        <ol className="instructions">
-        {selectedMeal.strInstructions.split('\r\n').map((string, index) => (
-            <li key={index}>{string}</li>
-        ))}
-        </ol>
+            <h2 className="mealTitle">{selectedMeal.strMeal}</h2>
+        <img 
+            src = {selectedMeal.strMealThumb}  
+            alt={selectedMeal.strMeal} 
+            className="mealImage"
+        />
+        <div className="section">
+            <h2 className="ingredientsTitle">Ingredients</h2>
+            <ul className="ingredientList">{ingredients}</ul>
+        </div>
+        
+        <div className="section">
+            <h2>Instructions</h2>
+            <ol className="instructions">
+                {selectedMeal.strInstructions.split('\r\n').map((string, index) => (
+                    <li key={index}>{string}</li>
+                ))}
+            </ol>
+            </div>
         </div>
     </div>
-        );
+    );
 }
     
 export default MealDetails;

@@ -157,7 +157,7 @@ h3:hover {
 }
 
 /* Detailed mealList page */
-.mealDetails {
+.mealDetailsBackground {
   background-image: url('/food-details.jpg');
   background-size:cover;
   background-position: center;
@@ -165,22 +165,43 @@ h3:hover {
 }
 
 .mealContentBox {
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 30px;
-  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 50px 30px;
+  border-radius: 20px;
   max-width: 1000px;
-  margin: 60px auto;
+  margin-top: 0;
   /* Centrerar boxen horisontellt + lägger till luft ovanför */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   /* Lägger till skugga så boxen "lyfts" från bakgrunden */
+  text-align: center;
 }
 
-.mealTitle{
-  font-size: 40px;
+.mealTitle {
+  margin-bottom: 30px;
+  padding-top: 0;
+  background: none;
+  box-shadow: none;
+  font-size: 42px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.mealDetails img {
-  margin-top: 50px; 
+.mealDetails img, .mealImage {
+  margin: 0 auto 50px auto;
+  display: block;
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  border-radius: 50px;
+}
+
+/* Space between h2 and lists */
+.section h2 {
+  margin-bottom: 25px;
+}
+
+/* Adjust space between sections in the box*/
+.section {
+  margin-bottom: 60px;
 }
 
 img {
@@ -205,12 +226,13 @@ img:hover {
   padding-left: 1.8em; /* space for custom bullet */
   margin-bottom: 9px;
   font-size: 18px;
-  line-height: 1.4; /* mindre space mellan textraderna */
+  line-height: 1.4; /* less space between text rows */
   color: #1a1a1a; /* light for dark mode */
   display: flex;
   align-items: center; /* ensures bullet and text are aligned */
   margin-left: 50px;
 }
+
 .ingredientList li::before {
   content:'';
   list-style-type: circle;
@@ -232,15 +254,19 @@ img:hover {
   display: inline-block;
 }
 
+.instructions li {
+  max-width: 800px;         
+  word-break: break-word;   /* Tillåt radbrytning mitt i ord vid behov */
+  margin-bottom: 40px;      
+}
+
 .instructions {
   list-style-type: decimal;
-  margin-left: 35px;
   line-height: 50px;
   color:#1a1a1a;
   margin-left: 50px;
   padding-left: 1.8em; /* samma nivå som ingredientsList */
 }
-
 
 p {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
