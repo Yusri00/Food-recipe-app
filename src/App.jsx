@@ -5,15 +5,15 @@ import StartPage from './pages/StartPage.jsx';
 import './App.css';
 
 function App() {
-  const [searchForFood, setFood] = useState(""); // Söktexten från input
-  const [meals, setMeals] = useState([]);// Här lagras API-resultaten
+  const [searchForFood, setFood] = useState(""); // search text from input
+  const [meals, setMeals] = useState([]);// here is where API-result is stored
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Anropa fetchFood inuti useEffect
+  // calls fetchFood inside useEffect
   useEffect(() => {
     if (searchForFood.trim() === "") return;
     fetchFood(setErrorMessage);
-  }, [searchForFood]); // körs varje gång searchForFood ändras 
+  }, [searchForFood]); // runs everytime searchForFood changes 
       
   const fetchFood = (setErrorMessage) => {    
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchForFood}`)
@@ -22,9 +22,9 @@ function App() {
         console.log("API response:", data); 
         if (data.meals) {
           setMeals(data.meals);
-          setErrorMessage(""); // Inga fel, vi rensar felmeddelandet
+          setErrorMessage(""); // no errors fel, clear error message
         } else {
-          setMeals([]); // Om ingen maträtt hittas, töms listan
+          setMeals([]); // if no meal is found, empty array
           setErrorMessage("Recipe could not be found");
         }
       })
@@ -39,7 +39,6 @@ function App() {
       setFood("");
     };
 
-    // TODO: Försök dig på VG uppgiften, om inte - testa med olika projekt som involverar global state management, typ Context APIet eller Zustand
     const startPageProps = {
       handleReset,
       setFood,
@@ -51,12 +50,12 @@ function App() {
   return (
     <Router>
       <Routes>
-         {/* Startsidan med sökning */}
+         {/* Startpage */}
         <Route
           path="/"
           element={<StartPage {...startPageProps} />}
         />
-         {/* Sidan för att visa detaljer om en måltid */}
+         {/* meal details page */}
         <Route path="/meal/:id" element={<MealDetails meals={meals} />} />
       </Routes>
     </Router>

@@ -3,16 +3,16 @@ import { useParams } from "react-router-dom";
 function MealDetails({meals}) {
     const { id } = useParams(); //Hämtar ID från url
 
-    //Kollar om meal finns och har innehåll. Vi vill inte se detaljer för måltid som inte finns ännu.
+    //checks if there is a meal and if it has content. We dont want to see details of a meal that isn't found yet
     if(!meals || meals.length === 0) return null;
     
-    //Hitta rätt maträtt i listan
+    //find correct meal on list
     const selectedMeal = meals.find((meal) => meal.idMeal == id);
 
-    // Visar error BARA när meals utan matchning med recept
+    // shows error ONLY when meals isn't matched with a recipe 
     if (!selectedMeal) return <p>Recipe could not be found</p>;
 
-    //Loopa igenom alla ingredienser i arrayen
+    // loops through all ingredients in the array
     const ingredients = [];
     for (let i = 1; i <= 20; i++){
         const measures = selectedMeal[`strMeasure${i}`];
@@ -46,7 +46,10 @@ return (
         <div className="section">
             <h2>Instructions</h2>
             <ol className="instructions">
-                {selectedMeal.strInstructions.split('\r\n').map((string, index) => (
+                {selectedMeal.strInstructions
+                .split('\r\n')
+                .filter(string => string.trim() !== "") //hides empty strings in instructions
+                .map((string, index) => (
                     <li key={index}>{string}</li>
                 ))}
             </ol>
