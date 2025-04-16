@@ -7,8 +7,6 @@
 html,
 body {
   height: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 #root {
@@ -37,46 +35,50 @@ body {
   min-height: 100vh;
 }
 
-.startPage {
-  background-image: url('/background.jpeg');
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-  padding: 40px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+img {
+  width: 50%;
+  max-width: 500px; 
+  height: auto;
+  border-radius: 50px;
+  transition: border-radius ease-in-out 1s, border 0.7s ease-in-out;
 }
 
-.searchContainer {
-  margin-bottom: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px; /* Mellanrum mellan input och knapp */
-  margin-bottom: 30px;
-  flex-wrap: wrap; /* Gör att de inte bryts konstigt på små skärmar */
+img:hover {
+  border: 1px solid rgb(147, 147, 147);
+  border-radius: 400px;
 }
 
-
-input {
-  width: 300px;
-  height: 40px;
-  padding: 10px 15px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #ffffff;
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: #1a1a1a;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  margin-right: 10px;
 }
 
-input:focus {
-  outline: none;
-  border-color: #646cff;
-  box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.3);
+h2{
+  color: #1a1a1a;
+}
+
+h3 {
+  font-size: 30px;
+  color: #1a1a1a;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 700;
+  font-size: 35px;
+}
+
+h3:hover {
+  color: blue;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
 }
 
 button {
@@ -106,57 +108,111 @@ button:active {
   transform: translateY(1px);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+input {
+  width: 300px;
+  height: 40px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  margin-right: 10px;
 }
 
-a:hover {
-  color: #535bf2;
+input:focus {
+  outline: none;
+  border-color: #646cff;
+  box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.3);
+}
+
+.localError{
+  color: red;
+  background-color: rgba(255, 255, 255, 0.7); /* white with transparence */
+  padding: 1px 5px;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-right: 90px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+  background-color: rgba(255, 255, 255, 0.7); /* white with transparence */
+  padding: 1px 5px;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-right: 90px;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+p {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 17px;
+}
+
+/* ---------------------------------------- */
+/* Startpage                                */
+/* ---------------------------------------- */
+.startPage {
+  background-image: url('/background.jpeg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .titleContainer {
   margin-bottom: 40px;
 }
 
+.searchContainer {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* space between input and button */
+  flex-wrap: wrap; /* Makes lines not break weird on small screens */
+}
+
+/* ---------------------------------------- */
+/* MEAL LIST (receptlista)                  */
+/* ---------------------------------------- */
 .mealListContainer {
   width: 100%;
+  margin-top: 30px; 
 }
 
-.error {
-  color: red;
-  margin-right: 70px;
-  font-weight: 400;
-  font-size: 17px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+.mealListContainer h3 {
+  margin-bottom: 15px; 
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: #1a1a1a;
+.mealListContainer img {
+  margin-top: 10px; 
+  margin-bottom: 40px;
 }
 
-h2{
-  color: #1a1a1a;
+.mealListContainer li {
+  margin-bottom: 50px; 
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-top: 20px; 
+  text-align: center;
 }
 
-h3 {
-  font-size: 30px;
-  list-style-type: none;
-  color: #1a1a1a;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-weight: 600;
-  font-size: 30px;
-}
-
-h3:hover {
-  color: blue;
-}
-
-/* Detailed mealList page */
+/* ---------------------------------------- */
+/* Meal details                             */
+/* ---------------------------------------- */
 .mealDetailsBackground {
   background-image: url('/food-details.jpg');
   background-size:cover;
@@ -169,10 +225,10 @@ h3:hover {
   padding: 50px 30px;
   border-radius: 20px;
   max-width: 1000px;
-  margin-top: 0;
-  /* Centrerar boxen horisontellt + lägger till luft ovanför */
+  margin: 0px auto 60px auto; /* centers horisontally */
+  /* centers the box horisontally + adds air above */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  /* Lägger till skugga så boxen "lyfts" från bakgrunden */
+  /* adds shadow so boxes "lifts" from the background */
   text-align: center;
 }
 
@@ -188,7 +244,7 @@ h3:hover {
 .mealDetails img, .mealImage {
   margin: 0 auto 50px auto;
   display: block;
-  max-width: 600px;
+  max-width: 500px;
   width: 100%;
   height: auto;
   border-radius: 50px;
@@ -197,21 +253,12 @@ h3:hover {
 /* Space between h2 and lists */
 .section h2 {
   margin-bottom: 25px;
+  margin-left: 30px;
 }
 
 /* Adjust space between sections in the box*/
 .section {
   margin-bottom: 60px;
-}
-
-img {
-  border-radius: 50px;
-  transition: border-radius ease-in-out 0.5s, border 0.5s ease-in-out;
-}
-
-img:hover {
-  border: 1px solid rgb(147, 147, 147);
-  border-radius: 400px;
 }
 
 .ingredientList {
@@ -234,19 +281,15 @@ img:hover {
 }
 
 .ingredientList li::before {
-  content:'';
-  list-style-type: circle;
-  background-color: rgb(204, 162, 25);
-  width: 0.70em;
-  height: 0.70em;
-  display: inline-block; /* Visar cirkel form */
-  vertical-align: baseline;
-  margin-right: 0.9em;
+  content: '';
   position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0.7em;
+  height: 0.7em;
+  background-color: rgb(204, 162, 25);
   border-radius: 50%;
   transform: translateY(-50%);
-  top:50%;
-  left: 0%;
 }
 
 .measures{
@@ -254,25 +297,23 @@ img:hover {
   display: inline-block;
 }
 
+.instructions {
+  list-style-type: decimal;
+  line-height: 40px;
+  color:#1a1a1a;
+  margin-left: 50px;
+  padding-left: 1.8em; /* same level as ingredientsList */
+}
+
 .instructions li {
   max-width: 800px;         
-  word-break: break-word;   /* Tillåt radbrytning mitt i ord vid behov */
+  word-break: break-word;   /* allow line break in words if needed */
   margin-bottom: 40px;      
 }
 
-.instructions {
-  list-style-type: decimal;
-  line-height: 50px;
-  color:#1a1a1a;
-  margin-left: 50px;
-  padding-left: 1.8em; /* samma nivå som ingredientsList */
-}
-
-p {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 17px;
-}
-
+/* ---------------------------------------- */
+/* DARK / LIGHT MODE                        */
+/* ---------------------------------------- */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

@@ -14,8 +14,8 @@ function Search({ setFood, errorMessage }) {
         setLocalError('Please fill in field');
         return; 
       }
-       setLocalError(""); //Felmedelandet rensas om input är korrekt
-       setFood(searchForFood); // Skickar värdet till App.jsx. App tar hand om resten via useEffect
+       setLocalError(""); //Error message gets delete if input is correct
+       setFood(searchForFood); // send value to App.jsx. App takes care of the rest via useEffect
       };
 
     const handleKeyDown = (e) => {
@@ -36,7 +36,7 @@ function Search({ setFood, errorMessage }) {
           />
           <button onClick ={handleClick}>Search</button>
 
-          {localError && <p style={{color: 'red'}}>{localError}</p>} {/* Visa felmeddelande om det finns */}
+          {localError && <p className="localError">{localError}</p>} {/* Show error message if there is */}
           {!localError && errorMessage && <p className= "error">{errorMessage}</p>}
         </div>
       );
