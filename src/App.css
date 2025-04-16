@@ -133,7 +133,9 @@ input:focus {
   background-color: rgba(255, 255, 255, 0.7); /* white with transparence */
   padding: 1px 5px;
   border-radius: 5px;
-  margin-top: 20px;
+  height: 30px;
+  width: 300px;
+  margin-top: 15px;
   margin-right: 90px;
   font-size: 17px;
   font-weight: bold;
@@ -143,8 +145,10 @@ input:focus {
   color: red;
   background-color: rgba(255, 255, 255, 0.7); /* white with transparence */
   padding: 1px 5px;
+  height: 30px;
+  width: 300px;
   border-radius: 5px;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-right: 90px;
   font-weight: bold;
   font-size: 17px;
